@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+    <title>Страница логина </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <p th:if="${param.logout}" style="color:red">Вы только что вышли.</p>
+        <form th:action="@{/login}" method="post">
+            <fieldset>
+                <legend>::: Вход в систему</legend>
+                <div class="control-group">
+                    <label class="control-label" for="username">Имя пользователя :</label>
+                    <div class="controls">
+                        <input id="username" name="username" class="input-xlarge" type="text"></input>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="password">Пароль :</label>
+                    <div class="controls">
+                        <input id="password" name="password" class="input-xlarge" type="password"></input>
+                        <p th:if="${param.error}" style="color:red">Неправильное имя пользователя или пароль.</p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label"></label>
+                    <div class="controls">
+                        <button type="submit" class="btn btn-primary">Войти</button>
+                        <a href="registration" class="btn btn-primary">Зарегестрироваться</a>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

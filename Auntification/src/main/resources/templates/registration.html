@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <title>Create an account</title>
+</head>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<div class="container">
+    <div class="row">
+        <form class="form-horizontal" action="/registration" th:action="@{/registration}" th:object="${userForm}"
+              method="post">
+            <fieldset>
+                <legend>::: Регистрация нового пользователя</legend>
+                <div class="control-group">
+                    <label class="control-label">Имя пользователя:</label>
+                    <div class="controls">
+                        <input class="input-xlarge" type="text" th:field="*{username}"/>
+                        <span style="color:red" class="help-block" th:if="${#fields.hasErrors('username')}"
+                              th:errors="*{username}"></span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Пароль:</label>
+                    <div class="controls">
+                        <input class="input-xlarge" type="password" th:field="*{password}"/>
+                        <span style="color:red" class="help-block" th:if="${#fields.hasErrors('password')}"
+                              th:errors="*{password}"></span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Подтверждение пароля:</label>
+                    <div class="controls">
+                        <input class="input-xlarge" type="password" th:field="*{passwordConfirm}"/>
+                        <span style="color:red" class="help-block" th:if="${#fields.hasErrors('passwordConfirm')}"
+                              th:errors="*{passwordConfirm}"></span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label"></label>
+                    <div class="controls">
+                        <button type="submit" class="btn btn-primary">Зарегестрироваться</button>
+                        <a href="login" class="btn btn-primary">Назад</a>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+</body>
+</html>
